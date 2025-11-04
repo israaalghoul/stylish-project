@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Stylish</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="tot__detail" id="tot__detail">
+        <div class="container">
+            <div class="row">
+                <div id="tot__detail-route" class="d-flex py-3">
+                    <a href="index.html">
+                        <h5>Home</h5>
+                    </a>
+                    <span>/ Product Details</span>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tot__detail-card p-3 p-sm-4 p-lg-5 me-lg-4">
+                        <div class="text-center mb-3 p-md-4">
+                            <img id="detail-main-img" src="" alt="" class="img-fluid w-100" />
+                        </div>
+                        <ul class="nav tot__detail-gallery" id="detail-gallery">
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4">
+                    <div class="mb-4 pb-lg-2">
+                        <h1 class="tot__detail-heading mb-3" id="detail-heading"></h1>
+                        <p class="tot__detail-content mb-4">
+                            <span id="detail-rating"></span> <i class="fas fa-star mx-2"></i>
+                            <span id="detail-stock">
+                            </span>
+                        </p>
+                        <div class="row my-4">
+                            <div class="col-12 col-lg-10 col-xl-8">
+                                <p class="tot__detail-content mb-0" id="detail-content">
+                                </p>
+                            </div>
+                        </div>
+                        <h3 class="tot__detail-price fw-bold mb-0" id="detail-price"></h3>
+                    </div>
+
+                    <form action="#!">
+                        <div class="mb-4">
+                            <h5 class="tot__detail-title mb-2">Color</h5>
+                            <div class="btn-group tot__detail-radios d-block mb-2" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="tot__detail-color" id="tot__detail-color1"
+                                    autocomplete="off" checked />
+                                <label class="btn me-1 mt-1" style="--product-color: #ffc107"
+                                    for="tot__detail-color1"></label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-color" id="tot__detail-color2"
+                                    autocomplete="off" />
+                                <label class="btn me-1 mt-1" style="--product-color: #3aa9f3"
+                                    for="tot__detail-color2"></label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-color" id="tot__detail-color3"
+                                    autocomplete="off" />
+                                <label class="btn me-1 mt-1" style="--product-color: #ff7171"
+                                    for="tot__detail-color3"></label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-color" id="tot__detail-color4"
+                                    autocomplete="off" />
+                                <label class="btn me-1 mt-1" style="--product-color: #161d25"
+                                    for="tot__detail-color4"></label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-color" id="tot__detail-color5"
+                                    autocomplete="off" />
+                                <label class="btn me-1 mt-1" style="--product-color: #ff0000"
+                                    for="tot__detail-color5"></label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="tot__detail-title mb-0">Size: <span class="opacity-50">Extra Extra Small</span>
+                            </h5>
+                            <div class="btn-group tot__detail-radios d-block mb-2" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size1"
+                                    autocomplete="off" checked />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size1">
+                                    XXS
+                                </label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size2"
+                                    autocomplete="off" />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size2">
+                                    XS
+                                </label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size3"
+                                    autocomplete="off" />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size3">
+                                    S
+                                </label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size4"
+                                    autocomplete="off" />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size4">
+                                    M
+                                </label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size5"
+                                    autocomplete="off" />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size5">
+                                    L
+                                </label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size6"
+                                    autocomplete="off" />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size6">
+                                    XL
+                                </label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size7"
+                                    autocomplete="off" />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size7">
+                                    XXL
+                                </label>
+
+                                <input type="radio" class="btn-check" name="tot__detail-size" id="tot__detail-size8"
+                                    autocomplete="off" disabled />
+                                <label class="btn me-2 mt-2 rounded-pill overflow-hidden px-3 py-1"
+                                    for="tot__detail-size8">
+                                    XXXL
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="tot__detail-title mb-2">QTY</h5>
+                            <div class="input-group tot__detail-qty d-inline-flex mb-2">
+                                <input type="text" class="form-control" placeholder="" value="1"
+                                    aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                                <div class="input-group-text d-flex flex-column bg-transparent p-0">
+                                    <button class="btn" type="button">-</button>
+                                    <button class="btn" type="button">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-10 d-flex">
+                                <button
+                                    class="btn tot__detail-btn text-uppercase d-inline-flex justify-content-center align-items-center px-3 px-sm-5 me-2 me-lg-3 w-100">
+                                    Buy Now
+                                </button>
+                                <button
+                                    class="btn tot__detail-btn-outline text-uppercase bg-transparent d-inline-flex justify-content-center align-items-center px-3 px-sm-4 w-100">
+                                    Add To Cart
+                                </button>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button
+                                    class="btn btn-link tot__detail-fav d-inline-flex align-items-center text-decoration-none">
+                                    <i class="far fa-heart fs-5 me-1"></i> Add to wishlist
+                                </button>
+                                <button
+                                    class="btn btn-link tot__detail-share d-inline-flex align-items-center text-decoration-none">
+                                    <i class="fas fa-share-alt fs-5 me-1"></i> Share
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"
+        integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--JS -->
+    <script src="./main.js"></script>
+</body>
+
+</html>
