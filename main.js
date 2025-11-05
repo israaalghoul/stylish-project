@@ -63,7 +63,7 @@ if (productList) {
               <div class="tot__products-fav-icon"><i class="fas fa-heart"></i></div>
             </a>
             <a href="product.html?id=${product.id}">
-              <img src="${product.thumbnail}" alt="${product.title}" class="w-100" />
+              <img src="${product.thumbnail}" alt="${product.title}" class="w-75 w-lg-100" />
             </a>
             <h5 class="tot__products-ratings"><i class="fas fa-star me-1"></i>${product.rating}</h5>
           </div>
