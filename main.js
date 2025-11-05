@@ -9,7 +9,7 @@ const pagination = document.getElementById("pagination");
 const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
 const pageNumbers = document.getElementById("page-numbers");
-const pageLinks = document.querySelectorAll(".page-link");
+const pageLinksContainer = document.getElementById("page-links");
 let currentPageProducts = 1;
 const cardsPerPage = 8;
 
@@ -21,17 +21,15 @@ if (productList) {
       if (currentPage == "/index.html") {
         const res = await fetch(`${API_URL}?limit=8`);
         const data = await res.json();
-
         allProducts = data.products;
+        renderProducts(currentPage);
       } else {
-        const res = await fetch(API_URL);
+        const res = await fetch(`${API_URL}?limit=100`);
         const data = await res.json();
         allProducts = data.products;
-
-        const totalPages = Math.ceil(allProducts.length / cardsPerPage);
+        renderProducts(currentPageProducts);
         updatePagination();
       }
-      renderProducts(currentPage);
     } catch (error) {
       console.error("Error fetching products:", error);
       productList.innerHTML = "<p>Failed to load products.</p>";
@@ -48,11 +46,6 @@ if (productList) {
 
   function renderProducts(page) {
     productList.innerHTML = "";
-
-    // if (products.length === 0) {
-    //   productList.innerHTML = '<p class="empty-list">No products found.</p>';
-    //   return;
-    // }
     const startIndex = (page - 1) * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
     let productsToShow = allProducts;
@@ -92,13 +85,40 @@ if (productList) {
   }
   //Pagination
   if (currentPage == "/allProducts.html") {
+    function generatePageLinks(totalPages) {
+      pageLinksContainer.innerHTML = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        const link = document.createElement("a");
+        link.href = "#";
+        link.classList.add("page-link");
+        link.dataset.page = i;
+        link.textContent = i;
+
+        if (i === currentPageProducts) {
+          link.classList.add("active");
+        }
+
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          currentPageProducts = i;
+          renderProducts(currentPageProducts);
+          updatePagination();
+        });
+
+        pageLinksContainer.appendChild(link);
+      }
+    }
     function updatePagination() {
       const totalPages = Math.ceil(allProducts.length / cardsPerPage);
       pageNumbers.textContent = `Page ${currentPageProducts} of ${totalPages}`;
       prevButton.disabled = currentPageProducts === 1;
       nextButton.disabled = currentPageProducts === totalPages;
+      generatePageLinks(totalPages);
     }
-    prevButton.addEventListener("click", () => {
+
+    prevButton.addEventListener("click", (e) => {
+      e.preventDefault();
       if (currentPageProducts > 1) {
         currentPageProducts--;
         renderProducts(currentPageProducts);
@@ -106,7 +126,8 @@ if (productList) {
       }
     });
 
-    nextButton.addEventListener("click", () => {
+    nextButton.addEventListener("click", (e) => {
+      e.preventDefault();
       const totalPages = Math.ceil(allProducts.length / cardsPerPage);
       if (currentPageProducts < totalPages) {
         currentPageProducts++;
@@ -170,36 +191,39 @@ if (!!productId) {
     });
 }
 // Category
-async function fetchCategory() {
-  try {
-    const res = await fetch(`${API_URL}/categories`);
-    const data = await res.json();
-    allCategories = data.slice(0, 5);
-    const categoryData = await Promise.all(
-    allCategories.map(async (i) => {
-      const cat = i.name;
-      const res = await fetch(`${API_URL}/category/${cat}?limit=1`);
+if (currentPage == "/index.html") {
+  async function fetchCategory() {
+    try {
+      const res = await fetch(`${API_URL}/categories`);
       const data = await res.json();
-      const firstProduct = data.products[0];
-      return {
-        name: cat,
-        image: firstProduct?.thumbnail || "https://cdn.easyfrontend.com/pictures/ecommerce/product27.jpg",
-      };
-    }));
-    renderCategory(categoryData);
-  } catch (error) {
-    console.error("Error fetching categories:", error);
-    categoryList.innerHTML = "<p>Failed to load categories.</p>";
+      allCategories = data.slice(0, 5);
+      const categoryData = await Promise.all(
+        allCategories.map(async (i) => {
+          const cat = i.name;
+          const res = await fetch(`${API_URL}/category/${cat}?limit=1`);
+          const data = await res.json();
+          const firstProduct = data.products[0];
+          return {
+            name: cat,
+            image:
+              firstProduct?.thumbnail ||
+              "https://cdn.easyfrontend.com/pictures/ecommerce/product27.jpg",
+          };
+        })
+      );
+      renderCategory(categoryData);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      categoryList.innerHTML = "<p>Failed to load categories.</p>";
+    }
   }
-}
 
-function renderCategory(categories) {
-  categoryList.innerHTML = "";
-
-  categories.forEach((category) => {
-    const cardCategory = document.createElement("div");
-    cardCategory.className = "col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2";
-    cardCategory.innerHTML = `
+  function renderCategory(categories) {
+    categoryList.innerHTML = "";
+    categories.forEach((category) => {
+      const cardCategory = document.createElement("div");
+      cardCategory.className = "col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2";
+      cardCategory.innerHTML = `
        <a href="">
             <div class="card tot__category-card">
                     <img src="${category.image}"
@@ -210,7 +234,8 @@ function renderCategory(categories) {
                     </div>
             </div>
         </a>`;
-    categoryList.appendChild(cardCategory);
-  });
+      categoryList.appendChild(cardCategory);
+    });
+  }
+  fetchCategory();
 }
-fetchCategory();
