@@ -391,9 +391,12 @@
 .tot__products-card {
   background-color: transparent;
   box-shadow: var(--card-shadow);
-  height: 395.29px;
+  height: auto;
+  min-height: 315px;
 }
-
+.tot__products-card .card-body{
+height: auto;
+}
 .tot__products-title {
   font-size: 17px;
   line-height: 21px;
